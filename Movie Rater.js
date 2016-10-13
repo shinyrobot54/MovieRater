@@ -9,13 +9,13 @@
 const PROMPT = require('readline-sync');
 
 let continueYesNo;
-let rating, averageRating, runThroughCounter, totalRating, rateCounter;
+let rating, averageRating, runThroughCounter, totalRating;
 
 function main(){
     process.stdout.write('\x1Bc'); //Clears the screen
     setContinueYesNo();
     while (continueYesNo === 1){
-        setCounter();
+        setRunThroughCounter();
         setMovieRating();
         setTotalRating();
         setAverageRating();
@@ -38,7 +38,7 @@ function setContinueYesNo(){
     }
 }
 
-function setCounter() {
+function setRunThroughCounter() {
     runThroughCounter ++;
 }
 
@@ -60,7 +60,11 @@ function setMovieRating() {
 }
 
 function setTotalRating(){
-    totalRating += rating;
+    if (totalRating == null) {
+        totalRating = rating;
+    } else {
+        totalRating += rating;
+    }
 }
 
 function setAverageRating(){
