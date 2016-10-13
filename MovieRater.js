@@ -44,10 +44,10 @@ function setMovieName() {
 }
 function setRunThroughCounter() {
     const FIRSTRUNTHROUGH = 1;
-    if (runThroughCounter == null){
-        runThroughCounter = FIRSTRUNTHROUGH;
-    } else {
+    if (runThroughCounter != null){
         runThroughCounter++;
+    } else {
+        runThroughCounter = FIRSTRUNTHROUGH;
     }
 }
 
@@ -69,10 +69,10 @@ function setMovieRating() {
 }
 
 function setTotalRating() {
-    if (totalRating == null) {
-        totalRating = rating;
-    } else {
+    if (totalRating != null) {
         totalRating += rating;
+    } else {
+        totalRating = rating;
     }
 }
 
