@@ -39,7 +39,12 @@ function setContinueYesNo(){
 }
 
 function setRunThroughCounter() {
-    runThroughCounter ++;
+    const FIRSTRUNTHROUGH = 1;
+    if (runThroughCounter == null){
+        runThroughCounter = FIRSTRUNTHROUGH;
+    } else {
+        runThroughCounter++;
+    }
 }
 
 function setMovieRating() {
@@ -49,7 +54,7 @@ function setMovieRating() {
     rating = Number(PROMPT.question('\nHow many stars would give The Breakfast Club [1-5, 1 being the lowest] \n'));
     if (rating > MAXSTAR || rating < MINSTAR){
         while (counter < NUMOFQUESTIONS && answered != CORRECT){
-            rating = PROMPT.question('\n Please enter a rating between 1 through 5 \n');
+            rating = Number(PROMPT.question('\n Please enter a rating between 1 through 5 \n'));
             if(rating > MAXSTAR || rating < MINSTAR){
                 counter++;
             } else{
@@ -59,7 +64,7 @@ function setMovieRating() {
     }
 }
 
-function setTotalRating(){
+function setTotalRating() {
     if (totalRating == null) {
         totalRating = rating;
     } else {
@@ -76,5 +81,5 @@ function printCurrentResults() {
 }
 
 function printEndResults() {
-    console.log('\n The average movie rating for "The Breakfast Club" is ' + averageRating + '!');
+    console.log('\n The average movie rating for "The Breakfast Club" is ' + averageRating + '!' + '\n Have a good day!');
 }
