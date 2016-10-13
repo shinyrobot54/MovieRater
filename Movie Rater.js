@@ -9,7 +9,7 @@
 const PROMPT = require('readline-sync');
 
 let continueYesNo;
-let rating, averageRating, counter, totalRating;
+let rating, averageRating, runThroughCounter, totalRating, rateCounter;
 
 function main(){
     process.stdout.write('\x1Bc'); //Clears the screen
@@ -29,7 +29,7 @@ main();
 
 function setContinueYesNo(){
     if (continueYesNo != null) {
-        continueYesNo = -1
+        continueYesNo = -1;
         while (continueYesNo !== 1 && continueYesNo !== 0){
             continueYesNo = Number(PROMPT.question('\n Would you like to continue? [Yes = 1 No = 0]\n'));
         }
@@ -39,12 +39,24 @@ function setContinueYesNo(){
 }
 
 function setCounter() {
-    counter ++;
+    runThroughCounter ++;
 }
 
-function setMovieRating() { //need to refactor this method
-    rating = Number(PROMPT.question('\nHow many stars would give "The Breakfast Club" [1-5, 1 being the lowest] \n'));
-
+function setMovieRating() {
+    let answered = 0;
+    let counter = 0;
+    const MAXSTAR = 5, MINSTAR = 1, NUMOFQUESTIONS = 3, CORRECT = 1;
+    rating = Number(PROMPT.question('\nHow many stars would give The Breakfast Club [1-5, 1 being the lowest] \n'));
+    if (rating > MAXSTAR || rating < MINSTAR){
+        while (counter < NUMOFQUESTIONS && answered != CORRECT){
+            rating = PROMPT.question('\n Please enter a rating between 1 through 5 \n');
+            if(rating > MAXSTAR || rating < MINSTAR){
+                counter++;
+            } else{
+                answered = CORRECT;
+            }
+        }
+    }
 }
 
 function setTotalRating(){
@@ -52,7 +64,7 @@ function setTotalRating(){
 }
 
 function setAverageRating(){
-    averageRating = totalRating / counter;
+    averageRating = totalRating / runThroughCounter;
 }
 
 function printCurrentResults() {
