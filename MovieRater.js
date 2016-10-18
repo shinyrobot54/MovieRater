@@ -81,7 +81,7 @@ function setAverageRating(){
 }
 
 function printCurrentResults() {
-    console.log('\n Your movie rating for ' + movieName + ' is ' + rating + '. The average rating for "The Breakfast Club" so far is ' + averageRating + '.');
+    console.log('\n Your movie rating for ' + movieName + ' is ' + rating + '. The average rating for ' + movieName + ' so far is ' + averageRating + '.');
 }
 
 function printEndResults() {
