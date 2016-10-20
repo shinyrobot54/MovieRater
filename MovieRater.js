@@ -61,7 +61,7 @@ function setMovieRating() {
             rating = Number(PROMPT.question('\n Please enter a rating between 1 through 5 \n'));
             if(rating > MAXSTAR || rating < MINSTAR){
                 counter++;
-            } else{
+            } else {
                 answered = CORRECT;
             }
         }
